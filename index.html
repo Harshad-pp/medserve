@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Med Serve Health Care Clinic | Doctors, Lab, Pharmacy, ECG</title>
+  <meta name="description" content="Med Serve Health Care Clinic: doctors clinic, pharmacy, ECG, laboratory, nebulisation and observation. Chat on WhatsApp or send an appointment request.">
+  <meta name="theme-color" content="#0b7a66">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Med Serve Health Care Clinic">
+  <meta property="og:description" content="Your health, our promise. Doctors clinic, pharmacy, ECG, lab, nebulisation and observation.">
+  <meta property="og:image" content="assets/banner-1.svg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container topbar">
+      <a class="brand" href="#top" aria-label="Med Serve Health Care Clinic, home">
+        <img src="assets/logo.jpeg" width="52" height="52" alt="">
+        <span class="brand-text"><strong>MED SERVE</strong><span>Health Care Clinic</span></span>
+      </a>
+      <div class="top-contact">
+        <div class="emergency">
+          <span class="em-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg> Emergency &amp; Enquiries</span>
+          <span class="em-nums" id="topPhones"></span>
+        </div>
+        <a class="wa-icon" data-wa data-wa-icon data-wa-msg="default" href="#contact" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.8-.1 1.4z"/></svg>
+        </a>
+        <a class="btn btn-primary btn-sm book" href="#appointment">Book appointment</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    </div>
+    <nav class="mainnav" aria-label="Main">
+      <ul class="container nav-links" id="navLinks">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#specialities">Specialities</a></li>
+        <li><a href="#doctors" id="navDoctors" hidden>Doctors</a></li>
+        <li><a href="#lab">Laboratory</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="slider" id="top" aria-roledescription="carousel" aria-label="Clinic highlights">
+      <div class="slides" id="slides"></div>
+      <button class="s-btn prev" id="prevSlide" aria-label="Previous slide">&#8249;</button>
+      <button class="s-btn next" id="nextSlide" aria-label="Next slide">&#8250;</button>
+      <div class="dots" id="dots" role="tablist" aria-label="Choose slide"></div>
+    </section>
+
+    <section class="quickbar">
+      <div class="container quick-grid">
+        <a class="quick" href="#appointment"><strong>Book an appointment</strong><span>Send a request online</span></a>
+        <a class="quick" data-wa data-wa-msg="doctor" href="#contact" target="_blank" rel="noopener"><strong>Doctor timings</strong><span>Ask on WhatsApp</span></a>
+        <a class="quick" data-wa data-wa-msg="lab" href="#contact" target="_blank" rel="noopener"><strong>Lab tests</strong><span>Enquire on WhatsApp</span></a>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What we offer</p>
+          <h2>Our services</h2>
+          <p>Everything you need for everyday health care in one place.</p>
+        </div>
+        <div class="grid" id="serviceGrid"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="specialities">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Specialist consultation</p>
+          <h2>Specialities</h2>
+          <p>Specialist doctors are available in the areas below.</p>
+        </div>
+        <ul class="tag-list" id="specList"></ul>
+        <p class="notice" id="doctorNote">Doctor names and consultation days vary. Please call or message us on WhatsApp to confirm which doctor is available before you visit.</p>
+        <p style="margin-top:1rem"><a class="btn btn-wa btn-sm" data-wa data-wa-msg="doctor" href="#contact" target="_blank" rel="noopener">Ask about doctor timings</a></p>
+      </div>
+    </section>
+
+    <section class="section doctors" id="doctors" hidden aria-labelledby="doctorsTitle">
+      <div class="container">
+        <div class="doc-head">
+          <div class="section-head">
+            <p class="eyebrow">Our doctors</p>
+            <h2 id="doctorsTitle">Meet our team of doctors</h2>
+          </div>
+          <div class="doc-nav">
+            <button type="button" class="doc-btn" id="docPrev" aria-label="Previous doctors">&#8249;</button>
+            <button type="button" class="doc-btn" id="docNext" aria-label="Next doctors">&#8250;</button>
+          </div>
+        </div>
+        <div class="doc-track" id="docTrack" tabindex="0" role="region" aria-label="Doctors, scroll horizontally"></div>
+        <p class="notice">Doctor availability and consultation days vary. Please call or message us to confirm before you visit.</p>
+      </div>
+    </section>
+
+    <section class="section" id="lab">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Laboratory &amp; diagnostics</p>
+          <h2>Laboratory and ECG</h2>
+          <p>The clinic has a laboratory and ECG facility. Please contact us to find out which tests are available, how to prepare, and when reports are ready.</p>
+          <div id="labTests"></div>
+          <p class="notice">Test availability, preparation and report timing can differ by test. Please confirm with the clinic before visiting.</p>
+          <p style="margin-top:1rem"><a class="btn btn-wa btn-sm" data-wa data-wa-msg="lab" href="#contact" target="_blank" rel="noopener">Ask about lab tests</a></p>
+        </div>
+        <img class="art" src="assets/banner-3.svg" width="1600" height="700" loading="lazy" alt="Illustration of laboratory test tubes">
+      </div>
+    </section>
+
+    <section class="section alt" id="about">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">About us</p>
+          <h2>Med Serve Health Care Clinic</h2>
+          <p>Med Serve is a health care clinic where patients can see a doctor, collect medicines from the pharmacy, get an ECG, have lab tests done, and use nebulisation and observation services in one place.</p>
+          <p>Our aim is simple: friendly, reliable care for you and your family.</p>
+        </div>
+        <img class="art" src="assets/banner-4.svg" width="1600" height="700" loading="lazy" alt="Illustration of a family cared for by clinic doctors">
+      </div>
+    </section>
+
+    <section class="section" id="appointment">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Appointment / enquiry</p>
+          <h2>Request an appointment</h2>
+          <p>Fill in the short form and the clinic will contact you to confirm a time.</p>
+          <p class="notice"><strong>This is a request, not a confirmed booking.</strong> The clinic will contact you to confirm availability. Please do not share detailed medical information in this form.</p>
+        </div>
+        <form id="enquiryForm" novalidate>
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+          <div class="row-2">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" maxlength="80" required>
+              <span class="error-msg" id="err-name" role="alert"></span>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" required>
+              <span class="error-msg" id="err-phone" role="alert"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="opt">(optional)</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="120">
+            <span class="error-msg" id="err-email" role="alert"></span>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="service">Doctor / service</label>
+              <select id="service" name="service"></select>
+            </div>
+            <div class="field">
+              <label for="type">Enquiry type</label>
+              <select id="type" name="enquiry_type">
+                <option>Appointment request</option>
+                <option>Lab / test enquiry</option>
+                <option>General enquiry</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="when">Preferred date / time <span class="opt">(optional)</span></label>
+            <input id="when" name="preferred_time" type="text" maxlength="60" placeholder="e.g. Tomorrow morning">
+          </div>
+          <div class="field">
+            <label for="message">Message <span class="opt">(optional)</span></label>
+            <textarea id="message" name="message" maxlength="500"></textarea>
+          </div>
+          <label class="check" for="consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <span>I agree that the clinic may use these details to contact me about this request.</span>
+          </label>
+          <span class="error-msg" id="err-consent" role="alert"></span>
+          <button class="btn btn-primary" type="submit" id="submitBtn">Send request</button>
+          <div class="status" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section alt" id="faq">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">FAQ</p><h2>Common questions</h2></div>
+        <div id="faqList" style="max-width:760px"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Get in touch</h2>
+          <ul class="info-list">
+            <li id="addrRow" hidden><strong>Address</strong><span id="addr"></span></li>
+            <li><strong>Phone</strong><span id="phones"></span></li>
+            <li id="emailRow" hidden><strong>Email</strong><span id="emailLink"></span></li>
+            <li id="hoursRow" hidden><strong>Consultation hours</strong><span id="hours"></span></li>
+          </ul>
+          <p class="notice" id="hoursNote"></p>
+          <div class="btn-row" style="margin-top:1rem">
+            <a class="btn btn-wa" data-wa data-wa-msg="default" href="#contact" target="_blank" rel="noopener">Chat on WhatsApp</a>
+            <a class="btn btn-outline" id="directions" href="#contact" target="_blank" rel="noopener">Get directions</a>
+          </div>
+        </div>
+        <img class="art" src="assets/banner-1.svg" width="1600" height="700" loading="lazy" alt="Illustration of a heart with a medical cross">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>Med Serve Health Care Clinic</h2>
+        <p class="small">This website is for information only. For a life-threatening emergency, go to the nearest hospital or call your local emergency number.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <p class="small"><a href="#services">Services</a><br><a href="#lab">Laboratory</a><br><a href="#appointment">Request appointment</a></p>
+      </div>
+      <div>
+        <h3>Call</h3>
+        <p class="small" id="footPhones"></p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" data-wa data-wa-msg="default" href="#contact" target="_blank" rel="noopener" aria-label="Chat with the clinic on WhatsApp" hidden>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.8-.1 1.4z"/></svg>
+    WhatsApp
+  </a>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
