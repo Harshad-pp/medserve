@@ -71,16 +71,16 @@ window.SITE = {
 
   doctors: [
 
-    { name: "Dr. Harikrishnan C. Satheesh", speciality: "Consultant Orthopaedic & Trauma Surgeon", qualification: "MBBS, MS (Ortho)", photo: "assets/doctors/Dr Harikrishnan c Satheesh.png", days: "", timings: "", status: "verified" },
+    { name: "Dr. Harikrishnan C. Satheesh", speciality: "Consultant Orthopaedic & Trauma Surgeon", qualification: "MBBS, MS (Ortho)", photo: "assets/doctors/harikrishnan-satheesh.jpg", days: "", timings: "", status: "verified" },
     { name: "Dr. K Nabeela", speciality: "Department of Paediatrics", qualification: "MBBS, DCH Consultant Paediatrician", photo: "assets/doctors/nabeela.jpeg", days: "", timings: "", status: "verified" },
     { name: "Dr. Farsana M", speciality: "Department of Dermatology", qualification: "MBBS, MD, DNB DVL Dermatologist", photo: "assets/doctors/farsana.jpeg", days: "", timings: "", status: "verified" },
     { name: "Dr. Shabana C.V.", speciality: "Dermatologist", qualification: "MBBS, MD, DVL", photo: "assets/doctors/doctor2.jpg", days: "", timings: "", status: "verified" },
-    { name: "Dr. Irfana K", speciality: "General Physician", qualification: "MBBS, Bachelor of Medicine and Bachelor of Surgery", photo: "assets/doctors/Dr Irfana.png", days: "", timings: "", status: "verified" },
+    { name: "Dr. Irfana K", speciality: "General Physician", qualification: "MBBS, Bachelor of Medicine and Bachelor of Surgery", photo: "assets/doctors/irfana.jpg", days: "", timings: "", status: "verified" },
     { name: "Dr. Salahudheen M", speciality: "General Surgeon", qualification: "MBBS, MS, DNB, FMAS", photo: "assets/doctors/doctor1.jpg", days: "", timings: "", status: "verified" },
-    { name: "Dr. Reshma M", speciality: "Consultant Pulmonologist (Respiratory Medicine)", qualification: "MBBS, DTCD, DNB", photo: "assets/doctors/Dr Reshma M.png", days: "", timings: "", status: "verified" },
-    { name: "Dr. Shafeeq P.", speciality: "Consultant Orthopaedic Surgeon", qualification: "MBBS, DNB (Orthopaedics)", photo: "assets/doctors/Dr Shafeeq P.png", days: "", timings: "", status: "verified" },
-    { name: "Dr. Nesmi Rahman K.", speciality: "Consultant Psychologist", qualification: "MSc, PhD, DLM, Hypnotherapy", photo: "assets/doctors/Dr Nesmi Rahman K.png", days: "", timings: "", status: "verified" },
-    { name: "Dr. Muhammed Shafi K", speciality: "General Medicine, Diabetology & Oncology", qualification: "MBBS, MD, ECMO, FCPM, C-Diab", photo: "assets/doctors/Dr Shafi.png", days: "", timings: "", status: "verified" }
+    { name: "Dr. Reshma M", speciality: "Consultant Pulmonologist (Respiratory Medicine)", qualification: "MBBS, DTCD, DNB", photo: "assets/doctors/reshma.jpg", days: "", timings: "", status: "verified" },
+    { name: "Dr. Shafeeq P.", speciality: "Consultant Orthopaedic Surgeon", qualification: "MBBS, DNB (Orthopaedics)", photo: "assets/doctors/shafeeq.jpg", days: "", timings: "", status: "verified" },
+    { name: "Dr. Nesmi Rahman K.", speciality: "Consultant Psychologist", qualification: "MSc, PhD, DLM, Hypnotherapy", photo: "assets/doctors/nesmi.jpg", days: "", timings: "", status: "verified" },
+    { name: "Dr. Muhammed Shafi K", speciality: "General Medicine, Diabetology & Oncology", qualification: "MBBS, MD, ECMO, FCPM, C-Diab", photo: "assets/doctors/shafi.jpg", days: "", timings: "", status: "verified" }
   ],
 
   // Lab tests: no test list was provided. Leave empty until confirmed.
