@@ -11,8 +11,11 @@ window.SITE = {
     shortName: "Med Serve",
     tagline: "Doctors Clinic · Pharmacy · ECG · Lab · Nebulisation · Observation",
     // Full postal address: fill in and set status to "verified" to show it on the Contact section.
-    fullAddress: { value: "", status: "confirm" },
-    mapsLink: "https://maps.app.goo.gl/ssnbtCxKLiAepXdj8?g_st=ac"
+    // Taken from the clinic's Google Maps listing.
+    fullAddress: { value: "Med Serve Health Care Clinic, Ozhur Road, opposite Govt Arts College, Puthantheru, Thanalur, Kerala 676307", status: "verified" },
+    mapsLink: "https://maps.app.goo.gl/ssnbtCxKLiAepXdj8?g_st=ac",
+    // Search text used for the embedded map and the turn-by-turn directions link.
+    mapsQuery: "Medserve Health Care Clinic, Ozhur Road, opposite Govt Arts College, Puthantheru, Thanalur, Kerala 676307"
   },
 
   phones: [
@@ -42,7 +45,7 @@ window.SITE = {
   },
 
   services: [
-    { id: "doctors", title: "Doctors Clinic", text: "General consultation with our visiting doctors." },
+    { id: "doctors", title: "Doctors Clinic", text: "Consultation with our general and specialist doctors across ten departments." },
     { id: "pharmacy", title: "Pharmacy", text: "Medicines available at the clinic." },
     { id: "ecg", title: "ECG", text: "Electrocardiogram testing at the clinic." },
     { id: "lab", title: "Laboratory", text: "Diagnostic laboratory for blood and other tests." },
@@ -52,26 +55,32 @@ window.SITE = {
 
   // Specialities are listed on the clinic's wall boards. Doctor names/timings were NOT
   // legible, so none are published. Add doctors here once confirmed.
+  // icon = key into ICONS in js/app.js
   specialities: [
-    "Gastroenterology",
-    "General Medicine",
-    "Paediatrics",
-    "Dermatology (Skin)",
-    "Orthopaedics",
-    "Pulmonology"
+    { name: "General Physician", icon: "stethoscope" },
+    { name: "General Medicine", icon: "kit" },
+    { name: "General Surgery", icon: "scalpel" },
+    { name: "Respiratory Medicine (Pulmonology)", icon: "lungs" },
+    { name: "Psychology", icon: "mind" },
+    { name: "Orthopaedics & Trauma Surgery", icon: "bone" },
+    { name: "Diabetology", icon: "drop" },
+    { name: "Oncology", icon: "ribbon" },
+    { name: "Dermatology", icon: "skin" },
+    { name: "Paediatrics", icon: "child" }
   ],
 
   doctors: [
 
-    { name: "Dr. Hari Krishnan C Sathish", speciality: "Orthopaedic & Trauma Surgeon", qualification: "MBBS, MS (Ortho) Consultant", photo: "assets/doctors/harikrishnan.jpeg", days: "", timings: "", status: "verified" },
+    { name: "Dr. Harikrishnan C. Satheesh", speciality: "Consultant Orthopaedic & Trauma Surgeon", qualification: "MBBS, MS (Ortho)", photo: "assets/doctors/Dr Harikrishnan c Satheesh.png", days: "", timings: "", status: "verified" },
     { name: "Dr. K Nabeela", speciality: "Department of Paediatrics", qualification: "MBBS, DCH Consultant Paediatrician", photo: "assets/doctors/nabeela.jpeg", days: "", timings: "", status: "verified" },
     { name: "Dr. Farsana M", speciality: "Department of Dermatology", qualification: "MBBS, MD, DNB DVL Dermatologist", photo: "assets/doctors/farsana.jpeg", days: "", timings: "", status: "verified" },
-    { name: "Dr. Irfana K", speciality: "General Physician", qualification: "MBBS, Bachelor of Medicine and Bachelor of Surgery", photo: "assets/doctors/doctor2.jpg", days: "", timings: "", status: "verified" },
+    { name: "Dr. Shabana C.V.", speciality: "Dermatologist", qualification: "MBBS, MD, DVL", photo: "assets/doctors/doctor2.jpg", days: "", timings: "", status: "verified" },
+    { name: "Dr. Irfana K", speciality: "General Physician", qualification: "MBBS, Bachelor of Medicine and Bachelor of Surgery", photo: "assets/doctors/Dr Irfana.png", days: "", timings: "", status: "verified" },
     { name: "Dr. Salahudheen M", speciality: "General Surgeon", qualification: "MBBS, MS, DNB, FMAS", photo: "assets/doctors/doctor1.jpg", days: "", timings: "", status: "verified" },
-    { name: "Dr. Reshma M", speciality: "Pulmonology", qualification: "MBBS, DTCD, DNB Pulmonologist (Respiratory Medicine)", photo: "assets/doctors/doctor2.jpg", days: "", timings: "", status: "verified" },
-    { name: "Dr. Shafeeq P", speciality: "Orthopaedic Surgeon", qualification: "MBBS, DNB(Orthopaedics) Consultant", photo: "assets/doctors/doctor1.jpg", days: "", timings: "", status: "verified" },
-    { name: "Dr. Nesmi Rahman K", speciality: "Department of Psychology", qualification: "MSc, PhD, DLDM, Hypnotherapy, Consultant Psychologist", photo: "assets/doctors/doctor2.jpg", days: "", timings: "", status: "verified" },
-    { name: "Dr. Muhammed Shafi K", speciality: "General Medicine", qualification: "MBBS, MD, ECMO, FCPM, C-Diab", photo: "assets/doctors/doctor1.jpg", days: "", timings: "", status: "verified" }
+    { name: "Dr. Reshma M", speciality: "Consultant Pulmonologist (Respiratory Medicine)", qualification: "MBBS, DTCD, DNB", photo: "assets/doctors/Dr Reshma M.png", days: "", timings: "", status: "verified" },
+    { name: "Dr. Shafeeq P.", speciality: "Consultant Orthopaedic Surgeon", qualification: "MBBS, DNB (Orthopaedics)", photo: "assets/doctors/Dr Shafeeq P.png", days: "", timings: "", status: "verified" },
+    { name: "Dr. Nesmi Rahman K.", speciality: "Consultant Psychologist", qualification: "MSc, PhD, DLM, Hypnotherapy", photo: "assets/doctors/Dr Nesmi Rahman K.png", days: "", timings: "", status: "verified" },
+    { name: "Dr. Muhammed Shafi K", speciality: "General Medicine, Diabetology & Oncology", qualification: "MBBS, MD, ECMO, FCPM, C-Diab", photo: "assets/doctors/Dr Shafi.png", days: "", timings: "", status: "verified" }
   ],
 
   // Lab tests: no test list was provided. Leave empty until confirmed.

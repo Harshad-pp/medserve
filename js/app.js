@@ -90,7 +90,58 @@
     grid.appendChild(c);
   });
 
-  S.specialities.forEach(function (s) { $("specList").appendChild(el("li", {}, s)); });
+  /* ---------- Specialities ---------- */
+  var SVGNS = "http://www.w3.org/2000/svg";
+  // Line icons on a 24x24 grid; each entry is a list of SVG shapes [tag, attrs].
+  var ICONS = {
+    stethoscope: [["path", { d: "M5 3v6a5 5 0 0 0 10 0V3M4 3h2M14 3h2M10 14v1.5a4.5 4.5 0 0 0 9 0V13" }], ["circle", { cx: 19, cy: 11, r: 2 }]],
+    kit: [["rect", { x: 3, y: 7, width: 18, height: 13, rx: 2 }], ["path", { d: "M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M12 11v5M9.5 13.5h5" }]],
+    scalpel: [["path", { d: "M20 4c-5 0-10 4-12 9l3 3c5-2 9-7 9-12zM8 13l-4.5 7.5M3 22h7" }]],
+    lungs: [["path", { d: "M9 4v7c0 4-1 7-4 8-2 .5-3-1-3-3 0-4 2-9 4-12 1-1.5 3-1.5 3 0zM15 4v7c0 4 1 7 4 8 2 .5 3-1 3-3 0-4-2-9-4-12-1-1.5-3-1.5-3 0zM12 3v7M12 10l-3 2M12 10l3 2" }]],
+    mind: [["path", { d: "M8 21v-3c-2-1-4-3-4-7a8 8 0 0 1 16 0c0 2-1 3-2 4v3a2 2 0 0 1-2 2H8z" }], ["path", { d: "M9 9.5a2 2 0 0 1 3-1 2 2 0 0 1 3 1.5c1 .5 1 2-.5 2.5M12 8.5v6" }]],
+    bone: [["g", { transform: "rotate(-45 12 12)" }, [["path", { d: "M7.7 10h8.6M7.7 14h8.6" }], ["circle", { cx: 5.5, cy: 9.5, r: 2.2 }], ["circle", { cx: 5.5, cy: 14.5, r: 2.2 }], ["circle", { cx: 18.5, cy: 9.5, r: 2.2 }], ["circle", { cx: 18.5, cy: 14.5, r: 2.2 }]]]],
+    drop: [["path", { d: "M12 3c3.5 4.5 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 2.5-6.5 6-11zM12 12v5M9.5 14.5h5" }]],
+    ribbon: [["path", { d: "M12 15C9 12.5 7 10.5 7 7.5a3.5 3.5 0 0 1 5-3.2 3.5 3.5 0 0 1 5 3.2c0 3-2 5-5 7.5zM10.5 16.5 8 21M13.5 16.5 16 21" }]],
+    skin: [["path", { d: "M3 8c3-2 6-2 9 0s6 2 9 0M3 13c3-2 6-2 9 0s6 2 9 0M3 18c3-2 6-2 9 0s6 2 9 0" }]],
+    child: [["circle", { cx: 12, cy: 13, r: 8 }], ["path", { d: "M12 5c0-1.5 1.5-2 2.5-1M9 12.5h.01M15 12.5h.01M9 16c1.7 1.5 4.3 1.5 6 0" }]]
+  };
+  function drawShapes(parent, shapes) {
+    shapes.forEach(function (sh) {
+      var n = document.createElementNS(SVGNS, sh[0]);
+      Object.keys(sh[1]).forEach(function (k) { n.setAttribute(k, sh[1][k]); });
+      if (sh[2]) drawShapes(n, sh[2]);
+      parent.appendChild(n);
+    });
+  }
+  function icon(key) {
+    var svg = document.createElementNS(SVGNS, "svg");
+    ["width:40", "height:40", "viewBox:0 0 24 24", "fill:none", "stroke:currentColor", "stroke-width:1.5", "stroke-linecap:round", "stroke-linejoin:round", "aria-hidden:true"].forEach(function (kv) {
+      var p = kv.split(":"); svg.setAttribute(p[0], p[1]);
+    });
+    drawShapes(svg, ICONS[key] || ICONS.kit);
+    return svg;
+  }
+
+  var specList = $("specList");
+  S.specialities.forEach(function (s, i) {
+    var a = el("a", { "class": "dept", href: "#appointment" });
+    a.style.setProperty("--i", i);
+    var ic = el("span", { "class": "dept-icon" });
+    ic.appendChild(icon(s.icon));
+    var tx = el("span", { "class": "dept-text" });
+    tx.appendChild(el("strong", {}, s.name));
+    tx.appendChild(el("span", { "class": "dept-go" }, "Enquire →"));
+    a.appendChild(ic); a.appendChild(tx);
+    a.addEventListener("click", function () { $("service").value = s.name + " (specialist)"; });
+    specList.appendChild(a);
+  });
+  // Fade the departments in one by one when the section scrolls into view.
+  if ("IntersectionObserver" in window) {
+    specList.classList.add("anim");
+    new IntersectionObserver(function (entries, obs) {
+      if (entries[0].isIntersecting) { specList.classList.add("in"); obs.disconnect(); }
+    }, { threshold: 0.15 }).observe(specList);
+  }
 
   var doctors = S.doctors.filter(function (d) { return d.status === "verified" && d.name; });
   if (doctors.length) {
@@ -190,13 +241,15 @@
     $("hours").textContent = S.hours.summary.value;
   }
   $("hoursNote").textContent = S.hours.note;
-  $("directions").href = S.clinic.mapsLink;
+  var mq = encodeURIComponent(S.clinic.mapsQuery);
+  $("directions").href = "https://www.google.com/maps/dir/?api=1&destination=" + mq;
+  $("mapFrame").src = "https://www.google.com/maps?q=" + mq + "&output=embed";
 
   /* ---------- Service select ---------- */
   var sel = $("service");
   sel.appendChild(el("option", { value: "No preference" }, "No preference"));
   S.services.forEach(function (s) { sel.appendChild(el("option", { value: s.title }, s.title)); });
-  S.specialities.forEach(function (s) { sel.appendChild(el("option", { value: s + " (specialist)" }, s + " (specialist)")); });
+  S.specialities.forEach(function (s) { sel.appendChild(el("option", { value: s.name + " (specialist)" }, s.name + " (specialist)")); });
 
   bindWa();
 
@@ -246,42 +299,33 @@
     if (Date.now() - lastSent < 30000) { showStatus("fail", "Please wait a moment before sending another request."); return; }
 
     var phoneHint = S.phones.map(function (p) { return p.display; }).join(" / ");
-    if (!S.form.accessKey) {
-      showStatus("fail", "Online requests are not switched on yet. Please call " + phoneHint + (waEnabled ? " or message us on WhatsApp." : "."));
+    if (!waEnabled) {
+      showStatus("fail", "Please call " + phoneHint + " to send your request.");
       return;
     }
 
-    btn.disabled = true; btn.textContent = "Sending…";
-    var data = {
-      access_key: S.form.accessKey,
-      subject: "New Appointment Request — " + S.clinic.name,
-      from_name: S.clinic.shortName + " website",
-      name: form.name.value.trim(),
-      phone: form.phone.value.trim(),
-      email: form.email.value.trim() || "Not provided",
-      service: form.service.value,
-      enquiry_type: form.enquiry_type.value,
-      preferred_time: form.preferred_time.value.trim() || "Not provided",
-      message: form.message.value.trim() || "—",
-      consent: "Yes",
-      submitted_at: new Date().toISOString(),
-      note: "Appointment request only. Not a confirmed booking. Please contact the patient to confirm.",
-      botcheck: ""
-    };
-    fetch(S.form.endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(data)
-    }).then(function (r) { return r.json(); }).then(function (res) {
-      if (res && res.success) {
-        lastSent = Date.now();
-        form.reset();
-        showStatus("ok", "Appointment request sent — awaiting clinic confirmation. This is not a confirmed booking; the clinic will contact you.");
-      } else { throw new Error("rejected"); }
-    }).catch(function () {
-      showStatus("fail", "Sorry, we could not send your request. Please call " + phoneHint + (waEnabled ? " or message us on WhatsApp." : "."));
-    }).then(function () {
-      btn.disabled = false; btn.textContent = "Send request";
-    });
+    var line = function (label, value) { return "*" + label + ":* " + value; };
+    var when = new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" });
+    var lines = [
+      "*NEW " + form.enquiry_type.value.toUpperCase() + "*",
+      "_" + S.clinic.name + " website_",
+      "------------------------",
+      line("Name", form.name.value.trim()),
+      line("Phone", form.phone.value.trim()),
+      line("Email", form.email.value.trim() || "Not provided"),
+      line("Doctor / Service", form.service.value),
+      line("Enquiry Type", form.enquiry_type.value),
+      line("Preferred Time", form.preferred_time.value.trim() || "Not provided"),
+      line("Message", form.message.value.trim() || "-"),
+      "------------------------",
+      "Submitted: " + when,
+      "_Appointment request only, not a confirmed booking._"
+    ];
+    var url = "https://wa.me/" + S.whatsapp.number + "?text=" + encodeURIComponent(lines.join("\n"));
+    lastSent = Date.now();
+    var w = window.open(url, "_blank", "noopener");
+    if (!w) { window.location.href = url; }
+    form.reset();
+    showStatus("ok", "WhatsApp is opening with your details. Please press Send in WhatsApp to deliver the request to the clinic.");
   });
 })();
