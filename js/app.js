@@ -46,7 +46,7 @@
   var track = $("slides"), dotsBox = $("dots"), cur = 0, timer = null;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   S.slides.forEach(function (s, i) {
-    var slide = el("div", { "class": "slide", role: "group", "aria-roledescription": "slide", "aria-label": (i + 1) + " of " + S.slides.length });
+    var slide = el("div", { "class": "slide" + (s.photo ? " photo" : ""), role: "group", "aria-roledescription": "slide", "aria-label": (i + 1) + " of " + S.slides.length });
     slide.appendChild(el("img", { src: s.img, alt: "", width: "1600", height: "700" }));
     var wrap = el("div", { "class": "container" });
     var cap = el("div", { "class": "cap" });

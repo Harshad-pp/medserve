@@ -29,6 +29,7 @@ window.SITE = {
 
   // Hero banners (full-width sliding). Images are original illustrations in assets/.
   slides: [
+    { img: "assets/medservehealthcare.png", photo: true, quote: "Med Serve Health Care Clinic.", sub: "Doctors, laboratory, pharmacy, ECG and nebulisation, all under one roof." },
     { img: "assets/banner-1.svg", quote: "Your health, our promise.", sub: "Doctors, laboratory, pharmacy and ECG, all under one roof." },
     { img: "assets/banner-2.svg", quote: "Care that listens, treatment that heals.", sub: "Consult our specialist doctors with confidence." },
     { img: "assets/banner-3.svg", quote: "Early tests, healthier tomorrows.", sub: "Laboratory and ECG services for you and your family." },

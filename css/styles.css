@@ -185,6 +185,14 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
 .slide { position: relative; flex: 0 0 100%; min-height: clamp(340px, 52vw, 560px); display: flex; align-items: center; }
 .slide > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,40,33,.85) 0%, rgba(4,40,33,.55) 45%, rgba(4,40,33,0) 80%); }
+/* Real clinic photo slide: photo fills the right side, text sits on solid teal */
+.slide.photo { background: var(--primary-dark); }
+.slide.photo > img { left: auto; right: 0; width: 66%; object-position: 50% 62%; }
+.slide.photo::after { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-dark) 34%, rgba(4,40,33,.0) 62%); }
+@media (max-width: 720px) {
+  .slide.photo > img { width: 100%; object-position: 40% 60%; }
+  .slide.photo::after { background: linear-gradient(0deg, rgba(4,40,33,.9) 0%, rgba(4,40,33,.55) 55%, rgba(4,40,33,.15) 100%); }
+}
 .slide .cap { position: relative; z-index: 2; color: #fff; max-width: 560px; padding: 2rem 0 3.5rem; }
 .slide .cap h1, .slide .cap h2 { color: #fff; font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: .4em; }
 .slide .cap p { font-size: clamp(1rem, 2.2vw, 1.25rem); margin-bottom: 1.4rem; }
