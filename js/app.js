@@ -50,11 +50,28 @@
     slide.appendChild(el("img", { src: s.img, alt: "", width: "1600", height: "700" }));
     var wrap = el("div", { "class": "container" });
     var cap = el("div", { "class": "cap" });
-    cap.appendChild(el(i === 0 ? "h1" : "h2", {}, s.quote));
+    if (s.tag) {
+      var pill = el("p", { "class": "tag-pill" });
+      pill.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/><path d="M6 12h3l1.5-2.5 3 5L15 12h3"/></svg>';
+      pill.appendChild(document.createTextNode(s.tag));
+      cap.appendChild(pill);
+    }
+    var hd = el(i === 0 ? "h1" : "h2", {}, s.line1 ? "" : s.quote);
+    if (s.line1) {
+      hd.setAttribute("aria-label", s.quote);
+      hd.appendChild(el("span", { "class": "h-line1" }, s.line1));
+      hd.appendChild(el("span", { "class": "h-line2" }, s.line2));
+    }
+    cap.appendChild(hd);
     cap.appendChild(el("p", {}, s.sub));
     var row = el("div", { "class": "btn-row" });
-    row.appendChild(el("a", { "class": "btn btn-primary", href: "#appointment" }, "Book appointment"));
-    var w = el("a", { "class": "btn btn-wa", "data-wa": "", "data-wa-msg": "default", href: "#contact", target: "_blank", rel: "noopener" }, "Chat on WhatsApp");
+    var bk = el("a", { "class": "btn btn-primary", href: "#appointment" });
+    bk.innerHTML = '<svg class="btn-ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg>';
+    bk.appendChild(document.createTextNode("Book appointment"));
+    row.appendChild(bk);
+    var w = el("a", { "class": "btn btn-wa", "data-wa": "", "data-wa-msg": "default", href: "#contact", target: "_blank", rel: "noopener" });
+    w.innerHTML = '<svg class="btn-ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.36A9.93 9.93 0 1 0 12.04 2zm0 1.8a8.13 8.13 0 1 1-4.15 15.14l-.3-.18-3.08.8.82-3-.2-.31A8.13 8.13 0 0 1 12.04 3.8zM8.6 7.6c-.17 0-.45.06-.69.32-.23.26-.9.88-.9 2.15s.92 2.5 1.05 2.67c.13.17 1.8 2.86 4.45 3.9 2.2.87 2.65.7 3.12.65.48-.04 1.54-.63 1.76-1.24.22-.6.22-1.13.15-1.24-.07-.1-.24-.17-.5-.3-.26-.13-1.54-.76-1.78-.85-.24-.09-.4-.13-.58.13-.17.26-.67.85-.82 1.02-.15.17-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.3-.78-.69-1.3-1.55-1.45-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.33-.02-.46-.07-.13-.58-1.4-.8-1.92-.2-.5-.42-.43-.58-.44h-.5z"/></svg>';
+    w.appendChild(document.createTextNode("Chat on WhatsApp"));
     row.appendChild(w);
     cap.appendChild(row); wrap.appendChild(cap); slide.appendChild(wrap); track.appendChild(slide);
     var d = el("button", { type: "button", role: "tab", "aria-label": "Go to slide " + (i + 1), "aria-selected": "false" });
@@ -242,6 +259,7 @@
   }
   $("hoursNote").textContent = S.hours.note;
   var mq = encodeURIComponent(S.clinic.mapsQuery);
+  if (S.clinic.mapsLink && $("topLoc")) $("topLoc").href = S.clinic.mapsLink;
   $("directions").href = "https://www.google.com/maps/dir/?api=1&destination=" + mq;
   $("mapFrame").src = "https://www.google.com/maps?q=" + mq + "&output=embed";
 

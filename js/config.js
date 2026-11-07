@@ -29,7 +29,7 @@ window.SITE = {
 
   // Hero banners (full-width sliding). Images are original illustrations in assets/.
   slides: [
-    { img: "assets/medservehealthcare.png", photo: true, quote: "Med Serve Health Care Clinic.", sub: "Doctors, laboratory, pharmacy, ECG and nebulisation, all under one roof." },
+    { img: "assets/medserve.png", photo: true, tag: "Your Family's Health, Our Priority", line1: "Med Serve", line2: "Health Care Clinic", quote: "Med Serve Health Care Clinic.", sub: "Doctors, laboratory, pharmacy, ECG and nebulisation, all under one roof." },
     { img: "assets/banner-1.svg", quote: "Your health, our promise.", sub: "Doctors, laboratory, pharmacy and ECG, all under one roof." },
     { img: "assets/banner-2.svg", quote: "Care that listens, treatment that heals.", sub: "Consult our specialist doctors with confidence." },
     { img: "assets/banner-3.svg", quote: "Early tests, healthier tomorrows.", sub: "Laboratory and ECG services for you and your family." },
@@ -81,7 +81,8 @@ window.SITE = {
     { name: "Dr. Reshma M", speciality: "Consultant Pulmonologist (Respiratory Medicine)", qualification: "MBBS, DTCD, DNB", photo: "assets/doctors/reshma.jpg", days: "", timings: "", status: "verified" },
     { name: "Dr. Shafeeq P.", speciality: "Consultant Orthopaedic Surgeon", qualification: "MBBS, DNB (Orthopaedics)", photo: "assets/doctors/shafeeq.jpg", days: "", timings: "", status: "verified" },
     { name: "Dr. Nesmi Rahman K.", speciality: "Consultant Psychologist", qualification: "MSc, PhD, DLM, Hypnotherapy", photo: "assets/doctors/nesmi.jpg", days: "", timings: "", status: "verified" },
-    { name: "Dr. Muhammed Shafi K", speciality: "General Medicine, Diabetology & Oncology", qualification: "MBBS, MD, ECMO, FCPM, C-Diab", photo: "assets/doctors/shafi.jpg", days: "", timings: "", status: "verified" }
+    { name: "Dr. Muhammed Shafi K", speciality: "General Medicine, Diabetology & Oncology", qualification: "MBBS, MD, ECMO, FCPM, C-Diab", photo: "assets/doctors/shafi.jpg", days: "", timings: "", status: "verified" },
+    { name: "Dr. Farseena", speciality: "General Physician", qualification: "MBBS, Bachelor of Medicine and Bachelor of Surgery", photo: "assets/doctors/farseena.png", days: "", timings: "", status: "verified" }
   ],
 
   // Lab tests: no test list was provided. Leave empty until confirmed.
